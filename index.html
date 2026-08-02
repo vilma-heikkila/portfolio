@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vilma Heikkilä - portfolio</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Chicle&family=Source+Sans+3:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -148,7 +149,9 @@
     border-bottom: 1px solid var(--border);
   }
 
-  section:last-of-type{ border-bottom: none; padding-bottom: 40vh; }
+  section:last-of-type{ border-bottom: none; padding-bottom: 64px; }
+
+  section:nth-last-of-type(2){ padding-bottom: 20vh; }
 
   .section-title {
     display: flex;
@@ -249,15 +252,40 @@
 
   .bio p:last-child{ margin-bottom: 0; }
 
-  .photo-block{ justify-self: end; }
+  .project-photo{ 
+    justify-self: start; 
+    padding-top: 16px; 
+  }
 
-  .photo-label{
+  .project-photo-frame{
+    width: 350px;
+    height: 350px;
+    border-radius: 8px;
+    border: 2.5px dotted var(--accent);
+    background: var(--bg-elevated);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
     font-family: var(--font-body);
     font-size: 12px;
-    color: var(--text-muted);
-    margin-bottom: 8px;
     text-align: center;
+    padding: 16px;
+    overflow: hidden;
   }
+
+  .project-photo-frame:hover{
+    border: 2.5px solid var(--accent);
+    transform: translateY(-1px);
+  }
+
+  .project-photo-frame img{
+    width: 100%; height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+
+  .photo-block{ justify-self: end; }
 
   .photo-frame{
     width: 260px;
@@ -428,6 +456,14 @@
 
   .rating .dot.filled{ background: var(--accent); }
 
+  .site-footer {
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.78rem;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+  }
+
   @media (max-width: 720px){
     .wrap{ padding: 0 20px; }
     .tabbar-inner{ padding: 0 20px; }
@@ -469,6 +505,9 @@
       </a>
       <a class="tab" data-tab="skills" href="#skills">
         <span class="tab-dot"></span><span data-i18n="nav_skills">Skills</span>
+      </a>
+      <a class="tab" data-tab="projects" href="#projects">
+        <span class="tab-dot"></span><span data-i18n="nav_projects">Projects</span>
       </a>
 
       <div class="lang-switch" role="group" aria-label="Language switch">
@@ -636,11 +675,70 @@
     </div>
   </section>
 
+    <!-- Projects -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-title">
+        <svg class="daisy" viewBox="0 0 120 120" aria-hidden="true"><use href="#daisy-flower"/></svg>
+        <h2 data-i18n="projects_h2">Projects</h2>
+        <svg class="daisy" viewBox="0 0 120 120" aria-hidden="true"><use href="#daisy-flower"/></svg>
+      </div>
+      <div class="bio">
+        <p data-i18n="projects_desc">Some small but fun (mostly student) projects:</p>
+      </div>
+      <div class="log">
+        <div class="log-entry">
+          <div class="log-title"><span>Weather dashboard</span></div>
+          <ul class="log-desc">
+            <li data-i18n="proj1_desc1">A simple weather dashboard utilizing Open-Meteo API. Built with the help of Claude and Sonnet 4.6. HTML/CSS/JS</li>
+            <li data-i18n="proj1_desc2">Fetch temperature, rain, and wind data from a location of your choice.</li>
+          </ul>
+          <div class="project-photo">
+            <a href="https://vilma-heikkila.github.io/weather_dashboard/" target="_blank" rel="noopener">
+              <div class="project-photo-frame"><img src="weather_dashboard.PNG" alt="Weather dashboard"></div>
+            </a>
+          </div>
+        </div>
+
+        <div class="log-entry">
+          <div class="log-title"><span>PYNQ UFO Shooter Game</span></div>
+          <ul class="log-desc">
+            <li data-i18n="proj2_desc1">Shooter game written in C, played on a PYNQ board. Created as a group project for an embedded systems course.</li>
+            <li data-i18n="proj2_desc2">Video of the game being played can be found in the GitHub repository!</li>
+          </ul>
+          <div class="project-photo">
+            <a href="https://github.com/vilma-heikkila/johsul" target="_blank" rel="noopener">
+              <div class="project-photo-frame"><img src="shootergame.PNG" alt="Shooter game"></div>
+            </a>
+          </div>
+
+        </div>
+
+        <div class="log-entry">
+          <div class="log-title"><span>NASA Astronomy Picture of the Day</span></div>
+          <ul class="log-desc">
+            <li data-i18n="proj3_desc1">Fetch a space-related picture from NASA APOD API for a specific day and save it to your device. C++/Qt</li>
+            <li data-i18n="proj3_desc2">Downloadable .exe coming later!</li>
+          </ul>
+          <div class="project-photo">
+            <a href="https://github.com/vilma-heikkila/NASA_picture_of_the_day_API" target="_blank" rel="noopener">
+              <div class="project-photo-frame"><img src="moon_stock.jpg" alt="Space image"></div>
+            </a>
+          </div>
+        </div>
+
+    </div>
+  </section>
+    <footer class="site-footer">
+      <p data-i18n="footer">Built with the help of Claude Sonnet 4.6</p>
+  </footer>
+
   <script>
     const TRANSLATIONS = {
       nav_about:            { en: 'About', fi: 'Yleistä' },
       nav_experience:       { en: 'Experience', fi: 'Työkokemus' },
       nav_skills:           { en: 'Skills', fi: 'Taidot' },
+      nav_projects:         { en: 'Projects', fi: 'Projektit' },
 
       about_lede:            { en: 'A full-stack software developer who combines technical and user-centered thinking and moves naturally between development and design.',
                                fi: 'Diplomi-insinööri ja full-stack ohjelmistokehittäjä, joka yhdistää luontevasti teknisen toteutuksen ja käyttäjäkeskeisen ajattelun.' },
@@ -690,6 +788,22 @@
       group_others:           { en: 'Others', fi: 'Muut' },
       group3_skill2:           { en: 'User-centered development', fi: 'Käyttäjäkeskeinen kehitys' },
       group3_skill3:           { en: 'UX/UI Design', fi: 'UX/UI-suunnittelu' },
+
+      projects_h2:             { en: 'Projects', fi: 'Projekteja' },
+      projects_desc:           { en: 'Some small but fun (mostly student) projects:', fi: 'Pieniä (pääosin opiskeluajan) projekteja:' },
+      proj1_desc1:             { en: 'A simple weather dashboard utilizing Open-Meteo API. Built with the help of Claude and Sonnet 4.6. HTML/CSS/JS', 
+                                 fi: 'Open-Meteo API:a hyödyntävä yksinkertainen säänäkymä. Toteutuksessa hyödynnetty Claude Sonnet 4.6-kielimallia. HTML/CSS/JS' },
+      proj1_desc2:             { en: 'Fetch temperature, rain, and wind data from a location of your choice.', 
+                                 fi: 'Voit hakea valitsemallesi sijainnille lämpötila-, sade- ja tuulidataa.' },
+      proj2_desc1:             { en: 'Shooter game written in C, played on a PYNQ board. Created as a group project for an embedded systems course.', 
+                                 fi: 'C-kielellä toteutettu, PYNQillä pelattava ammuntapeli. Parityönä tehty "Johdatus sulautettuihin järjestelmiin" -kurssin harjoitustyö.' },
+      proj2_desc2:             { en: 'Video of the game being played can be found in the GitHub repository!', 
+                                 fi: 'Pelivideo löytyy GitHub-reposta!' },
+      proj3_desc1:             { en: 'Fetch a space-related picture from NASA APOD API for a specific day and save it to your device. C++/Qt', 
+                                 fi: 'Voit hakea valitsemasi päivän avaruuskuvan NASA:n APOD API:sta ja tallentaa sen omalle koneellesi. C++/Qt' },
+      proj3_desc2:             { en: 'Downloadable .exe coming later!', 
+                                 fi: 'Ladattava .exe tulossa myöhemmin!' },
+      footer:                  { en: 'Built with the help of Claude Sonnet 4.6', fi: 'Toteutuksessa hyödynnetty Claude Sonnet 4.6-kielimallia' }
     };
 
     const i18nEls = document.querySelectorAll('[data-i18n]');
